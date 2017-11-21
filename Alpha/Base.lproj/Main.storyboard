@@ -550,11 +550,11 @@
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </tableViewCellContentView>
                                                                 </tableViewCell>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oWy-dH-qfJ">
+                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oWy-dH-qfJ">
                                                                     <rect key="frame" x="0.0" y="72" width="240" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oWy-dH-qfJ" id="AmS-o8-gAn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44.5"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;name 1&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIU-rN-7vQ">
@@ -567,11 +567,11 @@
                                                                         </subviews>
                                                                     </tableViewCellContentView>
                                                                 </tableViewCell>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="V4M-VV-2Fr">
+                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="V4M-VV-2Fr">
                                                                     <rect key="frame" x="0.0" y="116" width="240" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V4M-VV-2Fr" id="m0Z-IG-Sw5">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44.5"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;name 2&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bO8-50-s9h">
@@ -1011,8 +1011,8 @@
         <image name="placeholder.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BSv-hQ-TYD"/>
-        <segue reference="orP-65-bhY"/>
+        <segue reference="s89-Vn-LX2"/>
+        <segue reference="Fhz-UD-zjc"/>
         <segue reference="wd6-o1-YVw"/>
     </inferredMetricsTieBreakers>
 </document>
