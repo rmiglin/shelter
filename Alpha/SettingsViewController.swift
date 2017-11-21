@@ -1,8 +1,9 @@
 //
 //  SettingsViewController.swift
-//  
+//  Alpha
 //
 //  Created by Usman Siddiqui on 11/21/17.
+//  Copyright © 2017 Karla Padron. All rights reserved.
 //
 
 import UIKit

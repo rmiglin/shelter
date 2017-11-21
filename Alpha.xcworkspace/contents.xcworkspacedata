@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Alpha/SettingsViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:Alpha.xcodeproj">
    </FileRef>
    <FileRef

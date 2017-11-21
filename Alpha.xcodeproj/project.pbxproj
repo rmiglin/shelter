@@ -26,6 +26,7 @@
 		299556AB1FB1323000177A50 /* FollowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299556AA1FB1323000177A50 /* FollowerTableViewCell.swift */; };
 		299556AE1FB14A2B00177A50 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 299556AD1FB14A2B00177A50 /* MapKit.framework */; };
 		299556B01FB38D2E00177A50 /* MapFollowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299556AF1FB38D2E00177A50 /* MapFollowerTableViewCell.swift */; };
+		407854E71FC3FFC10063B5F3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407854E61FC3FFC10063B5F3 /* SettingsViewController.swift */; };
 		9F21E08C1B9D2CCE53ABFECD /* Pods_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A58AC448B0434ED060BF0FB /* Pods_Alpha.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		299556AF1FB38D2E00177A50 /* MapFollowerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFollowerTableViewCell.swift; sourceTree = "<group>"; };
 		2A90011E04A544E14684FEB0 /* Pods-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Alpha/Pods-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
 		3246B97ED5B872EB8EEB8D57 /* Pods-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-Alpha/Pods-Alpha.release.xcconfig"; sourceTree = "<group>"; };
+		407854E61FC3FFC10063B5F3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4A58AC448B0434ED060BF0FB /* Pods_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 			children = (
 				292FBC281FA3E74B007A1749 /* LoginViewController.swift */,
 				292FBC111FA3E249007A1749 /* AppDelegate.swift */,
+				407854E61FC3FFC10063B5F3 /* SettingsViewController.swift */,
 				292FBC151FA3E249007A1749 /* Main.storyboard */,
 				292FBC1B1FA3E249007A1749 /* Assets.xcassets */,
 				292FBC1D1FA3E249007A1749 /* LaunchScreen.storyboard */,
@@ -287,6 +290,7 @@
 				299556B01FB38D2E00177A50 /* MapFollowerTableViewCell.swift in Sources */,
 				294319751FAFA673008F9384 /* UserModel.swift in Sources */,
 				294319731FAF77D0008F9384 /* FollowerModel.swift in Sources */,
+				407854E71FC3FFC10063B5F3 /* SettingsViewController.swift in Sources */,
 				292FBC1A1FA3E249007A1749 /* Alpha.xcdatamodeld in Sources */,
 				292FBC311FA4C9B4007A1749 /* ResetViewController.swift in Sources */,
 				292FBC331FA5335C007A1749 /* HomeViewController.swift in Sources */,
