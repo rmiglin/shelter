@@ -1,17 +1,20 @@
 //
-//  MapFollowerTableViewCell.swift
+//  GeneralTableViewCell.swift
 //  Alpha
 //
-//  Created by Karla Padron on 11/8/17.
+//  Created by Karla Padron on 11/21/17.
 //  Copyright © 2017 Karla Padron. All rights reserved.
 //
 
 import UIKit
 
-class MapFollowerTableViewCell: UITableViewCell {
+class GeneralTableViewCell: UITableViewCell {
 
-    @IBOutlet var location: UILabel!
     @IBOutlet var name: UILabel!
+    @IBOutlet var username: UILabel!
+    @IBOutlet var password: UILabel!
+    @IBOutlet var phone: UILabel!
+    @IBOutlet var email: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

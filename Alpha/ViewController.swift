@@ -143,7 +143,7 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //creating a cell using the custom class
         let cell = tableView.dequeueReusableCell(withIdentifier: "followerCell", for: indexPath) as! MapFollowerTableViewCell
-        
+        print("map test")
         //the follower object
         let follower: FollowerModel
         
