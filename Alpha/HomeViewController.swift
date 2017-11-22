@@ -62,7 +62,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             textField.text = user.email
         }
         alertController.addTextField { (textField) in
-            textField.text = "user.streetAddess"
+            textField.text = user.streetAddress
         }
         alertController.addTextField { (textField) in
             textField.text = user.city
@@ -137,7 +137,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let userEmail = userObject?["enterEmail"]
                     let userPassword  = userObject?["enterPassword"]
                     let userPhoneNumber = userObject?["phoneNumber"]
-                    let userStreetAddress = userObject?["streetAdress"]
+                    let userStreetAddress = userObject?["streetAddress"]
                     let userCity  = userObject?["city"]
                     let userState = userObject?["state"]
                     let userZip = userObject?["zip"]
