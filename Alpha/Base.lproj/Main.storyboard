@@ -487,6 +487,14 @@
                                                         <action selector="editGeneral:" destination="YUu-gR-cES" eventType="touchUpInside" id="Ey7-TD-PC7"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPI-PT-kxh">
+                                                    <rect key="frame" x="308" y="51" width="44" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Status"/>
+                                                    <connections>
+                                                        <action selector="updateStatus:" destination="YUu-gR-cES" eventType="touchUpInside" id="Ues-Dl-ryv"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -607,7 +615,9 @@
                         <viewLayoutGuide key="safeArea" id="tV5-HB-Axp"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="ccq-o0-a5J" customClass="TabBarItem" customModule="Alpha" customModuleProvider="target"/>
-                    <navigationItem key="navigationItem" id="mbA-Rs-Lko"/>
+                    <navigationItem key="navigationItem" id="mbA-Rs-Lko">
+                        <nil key="title"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="settingTableView" destination="lsl-Pz-IFg" id="DcW-qR-ej3"/>
                     </connections>
@@ -696,7 +706,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Status"/>
                             <connections>
-                                <action selector="setStatus:" destination="Y7u-fq-N0y" eventType="touchUpInside" id="Ske-ds-FY4"/>
+                                <segue destination="YUu-gR-cES" kind="show" id="Zcz-HK-5VH"/>
                             </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="M0c-N0-FdD">
@@ -958,6 +968,7 @@
         <image name="green.png" width="640" height="640"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Zcz-HK-5VH"/>
         <segue reference="s89-Vn-LX2"/>
         <segue reference="Fhz-UD-zjc"/>
         <segue reference="wd6-o1-YVw"/>

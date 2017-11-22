@@ -15,6 +15,29 @@ import FirebaseDatabase
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBAction func updateStatus(_ sender: Any) {
+        let theUser = userList[0]
+        
+        let alertController = UIAlertController(title: theUser.firstName, message: "Are you safe from harm?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let safe = UIAlertAction(title: "Safe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+            let ID = theUser.id
+            let status = "green"
+            
+            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status)
+            print("Safe Button Pressed")})
+        let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+            let ID = theUser.id
+            let status = "red"
+            
+            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status)
+            print("Unsafe Button Pressed")})
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
+        alertController.addAction(cancelAction)
+        alertController.addAction(safe)
+        alertController.addAction(unsafe)
+        present(alertController, animated: true, completion: nil)
+    }
     @IBAction func editGeneral(_ sender: Any) {
         //getting the selected artist
         let user  = userList[0]
@@ -42,7 +65,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let state = alertController.textFields?[7].text
             let zip = alertController.textFields?[8].text
            
-            self.updateUser(id: id!, firstName: firstName!, lastName: lastName!, email: email!, password: password!, phone: phone!, streetAddress: streetAddress!, city: city!, state: state!, zip: zip!)
+            self.updateUser(id: id!, firstName: firstName!, lastName: lastName!, email: email!, password: password!, phone: phone!, streetAddress: streetAddress!, city: city!, state: state!, zip: zip!, status:user.status!)
         })
         
         //adding two textfields to alert
@@ -82,7 +105,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         present(alertController, animated: true, completion: nil)
     }
 
-    func updateUser(id:String, firstName:String, lastName:String,email:String, password:String, phone:String, streetAddress:String,city:String, state:String, zip:String){
+    func updateUser(id:String, firstName:String, lastName:String,email:String, password:String, phone:String, streetAddress:String,city:String, state:String, zip:String, status:String){
         //creating artist with the new given values
         let user = ["id":id,
                     "firstName": firstName,
@@ -94,7 +117,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     "city": city,
                     "state": state,
                     "zip": zip,
-                    "status": userList[0].status
+                    "status": status
         ]
         
         //updating the artist using the key of the artist

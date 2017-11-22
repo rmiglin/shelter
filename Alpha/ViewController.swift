@@ -15,20 +15,6 @@ import FirebaseDatabase
 
 class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-
-    @IBAction func setStatus(_ sender: Any) {
-        let theUser = Auth.auth().currentUser
-        
-        let alertController = UIAlertController(title: theUser?.email, message: "Are you safe from harm?", preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        let safe = UIAlertAction(title: "Safe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Safe Button Pressed")})
-        let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action)-> Void in print("Unsafe Button Pressed")})
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
-        alertController.addAction(cancelAction)
-        alertController.addAction(safe)
-        alertController.addAction(unsafe)
-        present(alertController, animated: true, completion: nil)
-    }
     @IBOutlet var back: UIButton!
     @IBAction func back(_ sender: Any) {
         theView.bringSubview(toFront: tableViewFollowers)
