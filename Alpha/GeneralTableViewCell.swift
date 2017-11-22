@@ -15,6 +15,10 @@ class GeneralTableViewCell: UITableViewCell {
     @IBOutlet var password: UILabel!
     @IBOutlet var phone: UILabel!
     @IBOutlet var email: UILabel!
+    @IBOutlet weak var streetAddress: UILabel!
+    @IBOutlet weak var city: UILabel!
+    @IBOutlet weak var state: UILabel!
+    @IBOutlet weak var zip: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -82,6 +82,7 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 
             }
         })
+        userList = [UserModel(id: "", firstName: "", lastName: "", email: "", password: "", phoneNumber: "", streetAddress: "", city: "", state: "", zip: "", status: "")]
         
         refUsers = Database.database().reference().child("users");
         

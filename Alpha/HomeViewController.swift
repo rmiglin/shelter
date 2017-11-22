@@ -21,35 +21,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //building an alert
         let alertController = UIAlertController(title: user.firstName, message: "Give new values to update ", preferredStyle: .alert)
-        /*
-        //the confirm action taking the inputs
-        let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
-            
-            //getting artist id
-            let id = user.id
-            
-            //getting new values
-            let firstName = alertController.textFields?[0].text
-            let lastName = alertController.textFields?[1].text
-            //let status = alertController.textFields?[2].text
-            let password = alertController.textFields?[3].text
-            let phone = alertController.textFields?[4].text
-            let email = alertController.textFields?[5].text
-            let streetAddress = alertController.textFields?[6].text
-            let city = alertController.textFields?[7].text
-            let state = alertController.textFields?[8].text
-            let zip = alertController.textFields?[9].text
-            
-            //calling the update method to update artist
-            //self.updateUser(id: id!, firstName: firstName!, lastName: lastName!, email: email!, password: password!, phone: phone!, streetAddress: streetAddress!, city: city!, state: state!, zip: zip!)
-        }
-        */
+
         //the cancel action doing nothing
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-            print("Ok Button Pressed 2")
-            //getting artist id
+
+            //getting user id
             let id = user.id
             
             //getting new values
@@ -202,6 +180,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.name.text = theUser.firstName
             cell.phone.text = theUser.phoneNumber
             cell.username.text = theUser.status
+            cell.streetAddress.text = "theUser.streetAddress"
+            cell.city.text = theUser.city
+            cell.state.text = theUser.state
+            cell.zip.text = theUser.zip
             
             if theUser.status == "green"{
                 cell.username.text = "safe"
