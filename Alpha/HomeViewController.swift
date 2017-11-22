@@ -14,7 +14,119 @@ import FirebaseDatabase
 
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+
+    @IBAction func editGeneral(_ sender: Any) {
+        //getting the selected artist
+        let user  = userList[0]
+        
+        //building an alert
+        let alertController = UIAlertController(title: user.firstName, message: "Give new values to update ", preferredStyle: .alert)
+        /*
+        //the confirm action taking the inputs
+        let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
+            
+            //getting artist id
+            let id = user.id
+            
+            //getting new values
+            let firstName = alertController.textFields?[0].text
+            let lastName = alertController.textFields?[1].text
+            //let status = alertController.textFields?[2].text
+            let password = alertController.textFields?[3].text
+            let phone = alertController.textFields?[4].text
+            let email = alertController.textFields?[5].text
+            let streetAddress = alertController.textFields?[6].text
+            let city = alertController.textFields?[7].text
+            let state = alertController.textFields?[8].text
+            let zip = alertController.textFields?[9].text
+            
+            //calling the update method to update artist
+            //self.updateUser(id: id!, firstName: firstName!, lastName: lastName!, email: email!, password: password!, phone: phone!, streetAddress: streetAddress!, city: city!, state: state!, zip: zip!)
+        }
+        */
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            print("Ok Button Pressed 2")
+            //getting artist id
+            let id = user.id
+            
+            //getting new values
+            let firstName = alertController.textFields?[0].text
+            let lastName = alertController.textFields?[1].text
+            //let status = alertController.textFields?[2].text
+            let password = alertController.textFields?[2].text
+            let phone = alertController.textFields?[3].text
+            let email = alertController.textFields?[4].text
+            let streetAddress = alertController.textFields?[5].text
+            let city = alertController.textFields?[6].text
+            let state = alertController.textFields?[7].text
+            let zip = alertController.textFields?[8].text
+           
+            self.updateUser(id: id!, firstName: firstName!, lastName: lastName!, email: email!, password: password!, phone: phone!, streetAddress: streetAddress!, city: city!, state: state!, zip: zip!)
+        })
+        
+        //adding two textfields to alert
+        alertController.addTextField { (textField) in
+            textField.text = user.firstName
+        }
+        alertController.addTextField { (textField) in
+            textField.text = user.lastName
+        }
+        alertController.addTextField { (textField) in
+            textField.text = user.password
+        }
+        alertController.addTextField { (textField) in
+            textField.text = user.phoneNumber
+        }
+        alertController.addTextField { (textField) in
+            textField.text = user.email
+        }
+        alertController.addTextField { (textField) in
+            textField.text = "user.streetAddess"
+        }
+        alertController.addTextField { (textField) in
+            textField.text = user.city
+        }
+        alertController.addTextField { (textField) in
+            textField.text = user.state
+        }
+        alertController.addTextField { (textField) in
+            textField.text = user.zip
+        }
+        
+        //adding action
+        //alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        alertController.addAction(ok)
+        //presenting dialog
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func updateUser(id:String, firstName:String, lastName:String,email:String, password:String, phone:String, streetAddress:String,city:String, state:String, zip:String){
+        //creating artist with the new given values
+        let user = ["id":id,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "enterEmail": email,
+                    "enterPassword": password,
+                    "phoneNumber": phone,
+                    "streetAddress": streetAddress,
+                    "city": city,
+                    "state": state,
+                    "zip": zip,
+                    "status": userList[0].status
+        ]
+        
+        //updating the artist using the key of the artist
+        refUsers.child(id).setValue(user)
+        
+        //displaying message
+        //labelMessage.text = "Artist Updated"
+    }
+
+
     @IBOutlet weak var settingTableView: UITableView!
     var userList = [UserModel]()
     var refUsers: DatabaseReference!
