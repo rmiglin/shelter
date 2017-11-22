@@ -20,8 +20,9 @@ class UserModel {
     var city: String?
     var state: String?
     var zip: String?
+    var status: String?
     
-    init(id: String?, firstName: String?, lastName: String?, email: String?, password: String?, phoneNumber: String?, streetAddress: String?, city: String?, state: String?, zip: String?){
+    init(id: String?, firstName: String?, lastName: String?, email: String?, password: String?, phoneNumber: String?, streetAddress: String?, city: String?, state: String?, zip: String?, status: String?){
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
@@ -32,5 +33,6 @@ class UserModel {
         self.city = city
         self.state = state
         self.zip = zip
+        self.status = status
     }
 }

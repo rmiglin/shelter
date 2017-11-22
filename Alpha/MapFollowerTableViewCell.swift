@@ -10,6 +10,8 @@ import UIKit
 
 class MapFollowerTableViewCell: UITableViewCell {
 
+
+    @IBOutlet weak var statusDot: UIImageView!
     @IBOutlet var location: UILabel!
     @IBOutlet var name: UILabel!
     override func awakeFromNib() {

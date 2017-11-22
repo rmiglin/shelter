@@ -82,9 +82,11 @@ class AddFollowerViewController: UIViewController {
                     let userCity  = userObject?["city"]
                     let userState = userObject?["state"]
                     let userZip = userObject?["zip"]
+                    let userStatus = userObject?["status"]
                     
                     //creating artist object with model and fetched values
-                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?)
+                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?,
+                        status: userStatus as! String?)
                     
                     //appending it to list
                     self.userList.append(user)

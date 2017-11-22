@@ -40,7 +40,7 @@ class RegisterViewController: UIViewController {
                 
                 if error == nil {
                     self.addUser()
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Tab")
                     self.present(vc!, animated: true, completion: nil)
 
                 } else {
@@ -81,7 +81,8 @@ class RegisterViewController: UIViewController {
                       "streetAddress": streetAddress.text! as String,
                       "city": city.text! as String,
                       "state": state.text! as String,
-                      "zip": zip.text! as String
+                      "zip": zip.text! as String,
+                      "status": "green"
         ]
         
         //adding the user inside the generated unique key

@@ -15,6 +15,7 @@ import FirebaseDatabase
 
 class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+
     @IBOutlet var back: UIButton!
     @IBAction func back(_ sender: Any) {
         theView.bringSubview(toFront: tableViewFollowers)
@@ -33,6 +34,8 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.register(LocationMarkerView.self,
+                         forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         //clear map of annotations
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
@@ -105,9 +108,11 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let userCity  = userObject?["city"]
                     let userState = userObject?["state"]
                     let userZip = userObject?["zip"]
+                    let userStatus = userObject?["status"]
                     
                     //creating artist object with model and fetched values
-                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?)
+                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?,
+                        status: userStatus as! String?)
                     
                     //appending it to list
                     self.userList.append(user)
@@ -143,9 +148,9 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //creating a cell using the custom class
         let cell = tableView.dequeueReusableCell(withIdentifier: "followerCell", for: indexPath) as! MapFollowerTableViewCell
-        print("map test")
         //the follower object
         let follower: FollowerModel
+        var userDiscipline = "green"
         
         //getting the follower of selected position
         follower = followerList[indexPath.row]
@@ -164,16 +169,26 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         cell.name?.text = "\(String!(theUser.firstName!)!)  \(String!(theUser.lastName!)!)"
         name = "\(String!(theUser.firstName!)!)  \(String!(theUser.lastName!)!)"
         
+        if theUser.status == "red"{
+            cell.statusDot.image = UIImage(named:"red.png")
+            userDiscipline = "red"
+        }
+        
         let loc = Location(  title: theUser.firstName!,
                              locationName: "Current Location",
-                             discipline: "Sculpture",
+                             discipline: userDiscipline,
                              coordinate: CLLocationCoordinate2D(latitude: 30.2907, longitude: -97.7472+count))
+       
+
+        
+        
         mapView.addAnnotation(loc)
         count+=0.004
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
         
         cell.location?.text = "(\(String(loc.coordinate.latitude)), \(String(loc.coordinate.longitude)))"
- 
+        
+        
         return cell
     }
     

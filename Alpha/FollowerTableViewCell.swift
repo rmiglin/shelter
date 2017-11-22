@@ -14,6 +14,7 @@ class FollowerTableViewCell: UITableViewCell {
 
 
 
+    @IBOutlet weak var statusDot: UIImageView!
     @IBOutlet var name: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
