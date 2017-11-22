@@ -15,7 +15,6 @@ import FirebaseDatabase
 
 class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-
     @IBOutlet var back: UIButton!
     @IBAction func back(_ sender: Any) {
         theView.bringSubview(toFront: tableViewFollowers)
@@ -124,7 +123,10 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             
         })
         self.back.isHidden = true
-
+        let alertController = UIAlertController(title: "Safe?", message: "Are you safe from harm?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     

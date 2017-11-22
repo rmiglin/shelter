@@ -479,6 +479,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xcp-dI-HWw">
+                                                    <rect key="frame" x="145" y="1" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Edit"/>
+                                                    <connections>
+                                                        <action selector="editGeneral:" destination="YUu-gR-cES" eventType="touchUpInside" id="Ey7-TD-PC7"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPI-PT-kxh">
+                                                    <rect key="frame" x="308" y="51" width="44" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Status"/>
+                                                    <connections>
+                                                        <action selector="updateStatus:" destination="YUu-gR-cES" eventType="touchUpInside" id="Ues-Dl-ryv"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -594,20 +610,14 @@
                                     <action selector="logout:" destination="YUu-gR-cES" eventType="touchUpInside" id="qbQ-NJ-14V"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xcp-dI-HWw">
-                                <rect key="frame" x="261" y="34" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Edit"/>
-                                <connections>
-                                    <action selector="editGeneral:" destination="YUu-gR-cES" eventType="touchUpInside" id="Ey7-TD-PC7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83921568629999999" green="0.91764705879999997" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="tV5-HB-Axp"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="ccq-o0-a5J" customClass="TabBarItem" customModule="Alpha" customModuleProvider="target"/>
-                    <navigationItem key="navigationItem" id="mbA-Rs-Lko"/>
+                    <navigationItem key="navigationItem" id="mbA-Rs-Lko">
+                        <nil key="title"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="settingTableView" destination="lsl-Pz-IFg" id="DcW-qR-ej3"/>
                     </connections>
@@ -680,6 +690,7 @@
                         <viewLayoutGuide key="safeArea" id="tR0-6n-XKd"/>
                     </view>
                     <navigationItem key="navigationItem" id="rZU-UM-7Ti">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="TXm-rR-G8O">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pzt-V3-r6f">
                                 <rect key="frame" x="16" y="7" width="46" height="30"/>
@@ -690,6 +701,14 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WVE-oF-ABh" userLabel="Status">
+                            <rect key="frame" x="165.5" y="7" width="44" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Status"/>
+                            <connections>
+                                <segue destination="YUu-gR-cES" kind="show" id="Zcz-HK-5VH"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="M0c-N0-FdD">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gXA-VF-6ZU">
                                 <rect key="frame" x="313" y="7" width="46" height="30"/>
@@ -807,7 +826,7 @@
                                 <items>
                                     <navigationItem title="Add Follower" id="dWU-sS-fHa">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="tlu-Bc-HtP">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dqt-OZ-uwJ">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dqt-OZ-uwJ">
                                                 <rect key="frame" x="16" y="7" width="34" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
@@ -903,7 +922,7 @@
                                 <items>
                                     <navigationItem title="Add Follower" id="jEC-CQ-Mqd">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="TZg-nT-8TQ">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J3Q-uK-IJf">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J3Q-uK-IJf">
                                                 <rect key="frame" x="16" y="7" width="34" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
@@ -949,6 +968,7 @@
         <image name="green.png" width="640" height="640"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Zcz-HK-5VH"/>
         <segue reference="s89-Vn-LX2"/>
         <segue reference="Fhz-UD-zjc"/>
         <segue reference="wd6-o1-YVw"/>
