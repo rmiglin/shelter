@@ -75,7 +75,9 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     
                     //appending it to list
                     if(follower.currentUser == Auth.auth().currentUser?.email ) {
+                        
                         self.followerList.append(follower)
+                        
                     }
                 }
                 
@@ -127,6 +129,7 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
+        
     }
     
     
@@ -183,14 +186,21 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                              coordinate: CLLocationCoordinate2D(latitude: 30.2907, longitude: -97.7472+count))
        
 
+        if( theUser.shareLocation == "True"){
+            mapView.addAnnotation(loc)
+        }
+
         
         
-        mapView.addAnnotation(loc)
+        
         count+=0.004
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
         
         cell.location?.text = "(\(String(loc.coordinate.latitude)), \(String(loc.coordinate.longitude)))"
         
+        if( theUser.shareLocation == "False"){
+            cell.location?.text = "Location Not Availible"
+        }
         
         return cell
     }

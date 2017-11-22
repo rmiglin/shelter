@@ -83,7 +83,12 @@ class RegisterViewController: UIViewController {
                       "state": state.text! as String,
                       "zip": zip.text! as String,
                       "status": "green",
+<<<<<<< HEAD
                       "shareLocation": "True"
+=======
+                      "shareLocation" : "True"
+            
+>>>>>>> 9267f6a98b89c01b63411aa95c2c4d2db7600a01
         ]
         
         //adding the user inside the generated unique key

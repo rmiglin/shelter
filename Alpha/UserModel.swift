@@ -35,6 +35,10 @@ class UserModel {
         self.state = state
         self.zip = zip
         self.status = status
+<<<<<<< HEAD
         self.shareLocation = status
+=======
+        self.shareLocation = shareLocation
+>>>>>>> 9267f6a98b89c01b63411aa95c2c4d2db7600a01
     }
 }
