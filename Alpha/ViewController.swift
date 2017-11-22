@@ -81,7 +81,7 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 
             }
         })
-        userList = [UserModel(id: "", firstName: "", lastName: "", email: "", password: "", phoneNumber: "", streetAddress: "", city: "", state: "", zip: "", status: "")]
+        userList = [UserModel(id: "", firstName: "", lastName: "", email: "", password: "", phoneNumber: "", streetAddress: "", city: "", state: "", zip: "", status: "green", shareLocation: "True")]
         
         refUsers = Database.database().reference().child("users");
         
@@ -109,10 +109,10 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let userState = userObject?["state"]
                     let userZip = userObject?["zip"]
                     let userStatus = userObject?["status"]
+                    let userShareLocation = userObject?["shareLocation"]
                     
                     //creating artist object with model and fetched values
-                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?,
-                        status: userStatus as! String?)
+                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?,status: userStatus as! String?, shareLocation: userShareLocation as! String?)
                     
                     //appending it to list
                     self.userList.append(user)
@@ -123,10 +123,12 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             
         })
         self.back.isHidden = true
+        /*
         let alertController = UIAlertController(title: "Safe?", message: "Are you safe from harm?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
+ */
     }
     
     
@@ -184,13 +186,17 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
        
 
         
-        
+
         mapView.addAnnotation(loc)
+        
         count+=0.004
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
         
         cell.location?.text = "(\(String(loc.coordinate.latitude)), \(String(loc.coordinate.longitude)))"
         
+        if(theUser.shareLocation == "False"){
+            cell.location?.text = "Location Not Available"
+        }
         
         return cell
     }

@@ -14,7 +14,20 @@ import FirebaseDatabase
 
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    @IBAction func shareLocation(_ sender: Any) {
+        let theUser = userList[0]
+        var shareLocation = "True"
+        if(theUser.shareLocation == "True"){
+            shareLocation = "False"
+        }
+        if(theUser.shareLocation == "False"){
+            shareLocation = "True"
+        }
+        let ID = theUser.id
+        self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: theUser.status!, shareLocation: shareLocation)
+        
+    }
+    
     @IBAction func updateStatus(_ sender: Any) {
         let theUser = userList[0]
         
@@ -24,13 +37,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let ID = theUser.id
             let status = "green"
             
-            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status)
+            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
             print("Safe Button Pressed")})
         let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
             let ID = theUser.id
             let status = "red"
             
-            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status)
+            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
             print("Unsafe Button Pressed")})
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
         alertController.addAction(cancelAction)
@@ -43,7 +56,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let user  = userList[0]
         
         //building an alert
-        let alertController = UIAlertController(title: user.firstName! + "'s Information", message: "Give new values to update ", preferredStyle: .alert)
+        let alertController = UIAlertController(title: user.firstName, message: "Give new values to update ", preferredStyle: .alert)
 
         //the cancel action doing nothing
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
@@ -65,10 +78,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let state = alertController.textFields?[7].text
             let zip = alertController.textFields?[8].text
            
-            self.updateUser(id: id!, firstName: firstName!, lastName: lastName!, email: email!, password: password!, phone: phone!, streetAddress: streetAddress!, city: city!, state: state!, zip: zip!, status:user.status!)
+            self.updateUser(id: id!, firstName: firstName!, lastName: lastName!, email: email!, password: password!, phone: phone!, streetAddress: streetAddress!, city: city!, state: state!, zip: zip!, status:user.status!, shareLocation: user.shareLocation!)
         })
         
-        //adding textfields to alert
+        //adding two textfields to alert
         alertController.addTextField { (textField) in
             textField.text = user.firstName
         }
@@ -105,7 +118,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         present(alertController, animated: true, completion: nil)
     }
 
-    func updateUser(id:String, firstName:String, lastName:String,email:String, password:String, phone:String, streetAddress:String,city:String, state:String, zip:String, status:String){
+    func updateUser(id:String, firstName:String, lastName:String,email:String, password:String, phone:String, streetAddress:String,city:String, state:String, zip:String, status:String, shareLocation: String){
         //creating artist with the new given values
         let user = ["id":id,
                     "firstName": firstName,
@@ -117,7 +130,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     "city": city,
                     "state": state,
                     "zip": zip,
-                    "status": status
+                    "status": status,
+                    "shareLocation": shareLocation
+            
         ]
         
         //updating the artist using the key of the artist
@@ -141,7 +156,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //self.userList = UserModel()
         
         //observing the data changes
-        userList = [UserModel(id: "", firstName: "", lastName: "", email: "", password: "", phoneNumber: "", streetAddress: "", city: "", state: "", zip: "", status: "")]
+        userList = [UserModel(id: "", firstName: "", lastName: "", email: "", password: "", phoneNumber: "", streetAddress: "", city: "", state: "", zip: "", status: "green", shareLocation: "True")]
         refUsers.observe(DataEventType.value, with: { (snapshot) in
             
             //if the reference have some values
@@ -165,10 +180,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let userState = userObject?["state"]
                     let userZip = userObject?["zip"]
                     let userStatus = userObject?["status"]
+                    let userShareLocation = userObject?["shareLocation"]
                     
                     //creating artist object with model and fetched values
-                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?,
-                                         status: userStatus as! String?)
+                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?,status: userStatus as! String?, shareLocation: userShareLocation as! String?)
                     
                     //appending it to list
                     
@@ -200,10 +215,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCell(withIdentifier: "General", for: indexPath) as! GeneralTableViewCell
             
             cell.email.text = theUser.email
-            cell.name.text = theUser.firstName! + " " + theUser.lastName!
+            cell.name.text = theUser.firstName
             cell.phone.text = theUser.phoneNumber
             cell.username.text = theUser.status
-            cell.streetAddress.text = theUser.streetAddress
+            cell.streetAddress.text = "theUser.streetAddress"
             cell.city.text = theUser.city
             cell.state.text = theUser.state
             cell.zip.text = theUser.zip
