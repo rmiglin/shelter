@@ -218,7 +218,6 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             counter += 1
         }
         mapView.selectAnnotation(mapView.annotations[selectedIndex], animated: true)
-        print(mapView.annotations[selectedIndex].coordinate)
         let userLocation = CLLocation(latitude: mapView.annotations[selectedIndex].coordinate.latitude, longitude: mapView.annotations[selectedIndex].coordinate.longitude)
         centerMapOnLocation(location: userLocation)
         theView.bringSubview(toFront: mapView)
