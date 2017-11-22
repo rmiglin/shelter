@@ -20,7 +20,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let user  = userList[0]
         
         //building an alert
-        let alertController = UIAlertController(title: user.firstName, message: "Give new values to update ", preferredStyle: .alert)
+        let alertController = UIAlertController(title: user.firstName! + "'s Information", message: "Give new values to update ", preferredStyle: .alert)
 
         //the cancel action doing nothing
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.updateUser(id: id!, firstName: firstName!, lastName: lastName!, email: email!, password: password!, phone: phone!, streetAddress: streetAddress!, city: city!, state: state!, zip: zip!)
         })
         
-        //adding two textfields to alert
+        //adding textfields to alert
         alertController.addTextField { (textField) in
             textField.text = user.firstName
         }
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             textField.text = user.email
         }
         alertController.addTextField { (textField) in
-            textField.text = "user.streetAddess"
+            textField.text = user.streetAddress
         }
         alertController.addTextField { (textField) in
             textField.text = user.city
@@ -137,7 +137,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let userEmail = userObject?["enterEmail"]
                     let userPassword  = userObject?["enterPassword"]
                     let userPhoneNumber = userObject?["phoneNumber"]
-                    let userStreetAddress = userObject?["streetAdress"]
+                    let userStreetAddress = userObject?["streetAddress"]
                     let userCity  = userObject?["city"]
                     let userState = userObject?["state"]
                     let userZip = userObject?["zip"]
@@ -177,10 +177,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCell(withIdentifier: "General", for: indexPath) as! GeneralTableViewCell
             
             cell.email.text = theUser.email
-            cell.name.text = theUser.firstName
+            cell.name.text = theUser.firstName! + " " + theUser.lastName!
             cell.phone.text = theUser.phoneNumber
             cell.username.text = theUser.status
-            cell.streetAddress.text = "theUser.streetAddress"
+            cell.streetAddress.text = theUser.streetAddress
             cell.city.text = theUser.city
             cell.state.text = theUser.state
             cell.zip.text = theUser.zip
