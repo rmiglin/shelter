@@ -13,10 +13,12 @@ class FollowerModel {
     var id: String?
     var follower: String?
     var currentUser: String?
+    var show: String?
     
-    init(id: String?, follower: String?, currentUser: String?){
+    init(id: String?, follower: String?, currentUser: String?, show: String?){
         self.id = id
         self.follower = follower
         self.currentUser = currentUser
+        self.show = show
     }
 }

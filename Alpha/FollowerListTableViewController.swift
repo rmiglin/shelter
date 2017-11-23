@@ -40,9 +40,10 @@ class FollowerListTableViewController: UITableViewController {
                     let followerFollower  = followerObject?["follower"]
                     let followerId  = followerObject?["id"]
                     let followerCurrentUser = followerObject?["currentUser"]
+                    let followerShow = followerObject?["show"]
                     
                     //creating artist object with model and fetched values
-                    let follower = FollowerModel(id: followerId as! String?, follower: followerFollower as! String?, currentUser: followerCurrentUser as! String?)
+                    let follower = FollowerModel(id: followerId as! String?, follower: followerFollower as! String?, currentUser: followerCurrentUser as! String?, show: followerShow as! String?)
                     
                     //appending it to list
                     if(follower.currentUser == Auth.auth().currentUser?.email ) {

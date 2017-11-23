@@ -69,12 +69,14 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let followerFollower  = followerObject?["follower"]
                     let followerId  = followerObject?["id"]
                     let followerCurrentUser = followerObject?["currentUser"]
+                    let followerShow = followerObject?["show"]
                     
                     //creating artist object with model and fetched values
-                    let follower = FollowerModel(id: followerId as! String?, follower: followerFollower as! String?, currentUser: followerCurrentUser as! String?)
+                    let follower = FollowerModel(id: followerId as! String?, follower: followerFollower as! String?, currentUser: followerCurrentUser as! String?, show: followerShow as! String?)
                     
                     //appending it to list
-                    if(follower.currentUser == Auth.auth().currentUser?.email ) {
+                   
+                    if(follower.currentUser == Auth.auth().currentUser?.email) {
                         self.followerList.append(follower)
                     }
                 }
@@ -109,26 +111,22 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let userState = userObject?["state"]
                     let userZip = userObject?["zip"]
                     let userStatus = userObject?["status"]
-                    let userShareLocation = userObject?["shareLocation"]
+                    let userShareLocation = userObject?["shareLocation"] as! String?
                     
                     //creating artist object with model and fetched values
-                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?,status: userStatus as! String?, shareLocation: userShareLocation as! String?)
+                    //if (userShareLocation != "False") {
+                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?,status: userStatus as! String?, shareLocation: userShareLocation)
                     
                     //appending it to list
                     self.userList.append(user)
-
+                    
                 }
                 self.tableViewFollowers.reloadData()
             }
             
         })
         self.back.isHidden = true
-        /*
-        let alertController = UIAlertController(title: "Safe?", message: "Are you safe from harm?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
- */
+
     }
     
     
@@ -196,6 +194,7 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         if(theUser.shareLocation == "False"){
             cell.location?.text = "Location Not Available"
+            //self.mapView.removeAnnotation(<#T##annotation: MKAnnotation##MKAnnotation#>)
         }
         
         return cell
