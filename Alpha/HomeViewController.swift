@@ -218,7 +218,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.name.text = theUser.firstName
             cell.phone.text = theUser.phoneNumber
             cell.username.text = theUser.status
-            cell.streetAddress.text = "theUser.streetAddress"
+            cell.streetAddress.text = theUser.streetAddress
             cell.city.text = theUser.city
             cell.state.text = theUser.state
             cell.zip.text = theUser.zip
