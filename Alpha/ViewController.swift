@@ -114,7 +114,7 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let userShareLocation = userObject?["shareLocation"] as! String?
                     
                     //creating artist object with model and fetched values
-                    //if (userShareLocation != "False") {
+
                     let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?,status: userStatus as! String?, shareLocation: userShareLocation)
                     
                     //appending it to list
@@ -186,6 +186,13 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
 
         mapView.addAnnotation(loc)
+        
+        if(theUser.shareLocation == "False"){
+            let lastAnnotations = [self.mapView.annotations.last]
+            self.mapView.removeAnnotations(lastAnnotations as! [MKAnnotation])
+
+        }
+        
         
         count+=0.004
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
