@@ -1170,7 +1170,7 @@
         <scene sceneID="wtW-Sq-6df">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HFH-1B-Rze" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" id="HzA-a2-8Ob"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="HzA-a2-8Ob"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Aka-8d-kdM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
