@@ -7,12 +7,83 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
-class FollowerProfileViewController: UIViewController {
+class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    var postList = [PostModel]()
+    var refPosts: DatabaseReference!
+    
+    @IBOutlet weak var followerProfileTableView: UITableView!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //creating a cell using the custom class
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileTableViewCell
+        
+        //the follower object
+        let post: PostModel
+        
+        
+        //getting the follower of selected position
+        post = postList[postList.count - 1  - indexPath.row]
+        
+        
+        
+        cell.post?.text = post.post
+        cell.time?.text = post.time
+        
+        /*
+         if theUser.status == "red"{
+         cell.statusDot.image = UIImage(named:"red.png")
+         userDiscipline = "red"
+         }
+         */
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return postList.count
+    }
+    
 
+    var follower: FollowerModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        refPosts = Database.database().reference().child("posts");
+        
+        //observing the data changes
+        refPosts.observe(DataEventType.value, with: { (snapshot) in
+            //if the reference have some values
+            if snapshot.childrenCount > 0 {
+                
+                //clearing the list
+                self.postList.removeAll()
+                
+                //iterating through all the values
+                for posts in snapshot.children.allObjects as! [DataSnapshot] {
+                    //getting values
+                    let postObject = posts.value as? [String: AnyObject]
+                    let postId  = postObject?["id"]
+                    let postUser  = postObject?["user"]
+                    let postTime = postObject?["time"]
+                    let postPost = postObject?["post"]
+                    
+                    //creating artist object with model and fetched values
+                    let post = PostModel(id: postId as! String?, user: postUser as! String?, post: postPost as! String?, time: postTime as! String?)
+                    
+                    //appending it to list
+                    
+                    if(post.user == self.follower!.follower) {
+                        self.postList.append(post)
+                    }
+                }
+                self.followerProfileTableView.reloadData()
+                
+            }
+        })
         // Do any additional setup after loading the view.
     }
 
