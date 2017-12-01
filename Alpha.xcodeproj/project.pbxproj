@@ -32,6 +32,7 @@
 		29D9D5101FD1CCB900B31C4D /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9D50F1FD1CCB900B31C4D /* PostViewController.swift */; };
 		29D9D5121FD1D46800B31C4D /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9D5111FD1D46800B31C4D /* PostModel.swift */; };
 		29D9D5161FD1DB6000B31C4D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9D5151FD1DB6000B31C4D /* ProfileTableViewCell.swift */; };
+		29E0C63D1FD1E37200534330 /* NewsfeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0C63C1FD1E37200534330 /* NewsfeedTableViewCell.swift */; };
 		29E7B9DB1FD0CCC500B68327 /* FollowerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7B9DA1FD0CCC500B68327 /* FollowerProfileViewController.swift */; };
 		29E7B9DD1FD0CCD800B68327 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7B9DC1FD0CCD800B68327 /* NewsfeedTableViewController.swift */; };
 		29F8F8CF1FC4D25E0093AE4F /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F8F8CE1FC4D25E0093AE4F /* GeneralTableViewCell.swift */; };
@@ -68,6 +69,7 @@
 		29D9D50F1FD1CCB900B31C4D /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		29D9D5111FD1D46800B31C4D /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		29D9D5151FD1DB6000B31C4D /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		29E0C63C1FD1E37200534330 /* NewsfeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewCell.swift; sourceTree = "<group>"; };
 		29E7B9DA1FD0CCC500B68327 /* FollowerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerProfileViewController.swift; sourceTree = "<group>"; };
 		29E7B9DC1FD0CCD800B68327 /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
 		29F8F8CE1FC4D25E0093AE4F /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				29D9D50F1FD1CCB900B31C4D /* PostViewController.swift */,
 				29D9D5111FD1D46800B31C4D /* PostModel.swift */,
 				29D9D5151FD1DB6000B31C4D /* ProfileTableViewCell.swift */,
+				29E0C63C1FD1E37200534330 /* NewsfeedTableViewCell.swift */,
 			);
 			path = Alpha;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				292FBC311FA4C9B4007A1749 /* ResetViewController.swift in Sources */,
 				292FBC331FA5335C007A1749 /* HomeViewController.swift in Sources */,
 				29E7B9DB1FD0CCC500B68327 /* FollowerProfileViewController.swift in Sources */,
+				29E0C63D1FD1E37200534330 /* NewsfeedTableViewCell.swift in Sources */,
 				292740481FAD044900ECC7CB /* AddFollowerViewController.swift in Sources */,
 				292FBC121FA3E249007A1749 /* AppDelegate.swift in Sources */,
 				299556AB1FB1323000177A50 /* FollowerTableViewCell.swift in Sources */,
