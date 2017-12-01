@@ -14,7 +14,9 @@ import FirebaseAuth
 class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     var postList = [PostModel]()
     var refPosts: DatabaseReference!
+
     
+    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var followerProfileTableView: UITableView!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //creating a cell using the custom class
@@ -50,6 +52,8 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
     
 
     var follower: FollowerModel?
+    var followerUserModel: UserModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         refPosts = Database.database().reference().child("posts");
@@ -84,7 +88,9 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
                 
             }
         })
+
         // Do any additional setup after loading the view.
+        name.text = followerUserModel?.firstName
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,5 +108,10 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+        self.followerProfileTableView.reloadData()
+    }
 
 }

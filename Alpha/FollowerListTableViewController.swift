@@ -57,6 +57,8 @@ class FollowerListTableViewController: UITableViewController {
 
         })
         
+        userList = [UserModel(id: "", firstName: "", lastName: "", email: "", password: "", phoneNumber: "", streetAddress: "", city: "", state: "", zip: "", status: "green", shareLocation: "True")]
+        
         refUsers = Database.database().reference().child("users");
         
         //observing the data changes
@@ -192,10 +194,24 @@ class FollowerListTableViewController: UITableViewController {
     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let selectedIndex = tableView.indexPathsForSelectedRows
+        let follower: FollowerModel
+        follower = followerList[selectedIndex![0][1]]
+        var theUser: UserModel
+        theUser = userList[0]
+        
+        for user in userList
+        {
+            if(user.email == follower.follower)
+            {
+                theUser = user
+            }
+        }
+        
         if segue.identifier == "ShowDetail" {
             if let dsvc = segue.destination as? FollowerProfileViewController{
-                let selectedIndex = tableView.indexPathsForSelectedRows
                 dsvc.follower = followerList[selectedIndex![0][1]]
+                dsvc.followerUserModel = theUser
             }
         }
         
