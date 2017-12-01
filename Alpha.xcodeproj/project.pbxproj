@@ -29,6 +29,9 @@
 		299556AE1FB14A2B00177A50 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 299556AD1FB14A2B00177A50 /* MapKit.framework */; };
 		299556B01FB38D2E00177A50 /* MapFollowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299556AF1FB38D2E00177A50 /* MapFollowerTableViewCell.swift */; };
 		29CA8C171FC4FF95003797C9 /* LocationMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA8C161FC4FF95003797C9 /* LocationMarkerView.swift */; };
+		29D9D5101FD1CCB900B31C4D /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9D50F1FD1CCB900B31C4D /* PostViewController.swift */; };
+		29D9D5121FD1D46800B31C4D /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9D5111FD1D46800B31C4D /* PostModel.swift */; };
+		29D9D5161FD1DB6000B31C4D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9D5151FD1DB6000B31C4D /* ProfileTableViewCell.swift */; };
 		29E7B9DB1FD0CCC500B68327 /* FollowerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7B9DA1FD0CCC500B68327 /* FollowerProfileViewController.swift */; };
 		29E7B9DD1FD0CCD800B68327 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7B9DC1FD0CCD800B68327 /* NewsfeedTableViewController.swift */; };
 		29F8F8CF1FC4D25E0093AE4F /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F8F8CE1FC4D25E0093AE4F /* GeneralTableViewCell.swift */; };
@@ -62,6 +65,9 @@
 		299556AD1FB14A2B00177A50 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		299556AF1FB38D2E00177A50 /* MapFollowerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFollowerTableViewCell.swift; sourceTree = "<group>"; };
 		29CA8C161FC4FF95003797C9 /* LocationMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMarkerView.swift; sourceTree = "<group>"; };
+		29D9D50F1FD1CCB900B31C4D /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		29D9D5111FD1D46800B31C4D /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		29D9D5151FD1DB6000B31C4D /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		29E7B9DA1FD0CCC500B68327 /* FollowerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerProfileViewController.swift; sourceTree = "<group>"; };
 		29E7B9DC1FD0CCD800B68327 /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
 		29F8F8CE1FC4D25E0093AE4F /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 				29CA8C161FC4FF95003797C9 /* LocationMarkerView.swift */,
 				29E7B9DA1FD0CCC500B68327 /* FollowerProfileViewController.swift */,
 				29E7B9DC1FD0CCD800B68327 /* NewsfeedTableViewController.swift */,
+				29D9D50F1FD1CCB900B31C4D /* PostViewController.swift */,
+				29D9D5111FD1D46800B31C4D /* PostModel.swift */,
+				29D9D5151FD1DB6000B31C4D /* ProfileTableViewCell.swift */,
 			);
 			path = Alpha;
 			sourceTree = "<group>";
@@ -305,12 +314,15 @@
 				292FBC291FA3E74B007A1749 /* LoginViewController.swift in Sources */,
 				292FBC2F1FA4BE31007A1749 /* RegisterViewController.swift in Sources */,
 				29CA8C171FC4FF95003797C9 /* LocationMarkerView.swift in Sources */,
+				29D9D5161FD1DB6000B31C4D /* ProfileTableViewCell.swift in Sources */,
 				2927404A1FAD04F800ECC7CB /* FollowerListTableViewController.swift in Sources */,
+				29D9D5101FD1CCB900B31C4D /* PostViewController.swift in Sources */,
 				292FBC141FA3E249007A1749 /* ViewController.swift in Sources */,
 				298987F11FA80BD1005AE9CB /* Location.swift in Sources */,
 				29E7B9DD1FD0CCD800B68327 /* NewsfeedTableViewController.swift in Sources */,
 				299556B01FB38D2E00177A50 /* MapFollowerTableViewCell.swift in Sources */,
 				29F8F8CF1FC4D25E0093AE4F /* GeneralTableViewCell.swift in Sources */,
+				29D9D5121FD1D46800B31C4D /* PostModel.swift in Sources */,
 				294319751FAFA673008F9384 /* UserModel.swift in Sources */,
 				294319731FAF77D0008F9384 /* FollowerModel.swift in Sources */,
 				407854E71FC3FFC10063B5F3 /* SettingsViewController.swift in Sources */,
