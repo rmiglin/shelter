@@ -16,6 +16,8 @@ class ProfileTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var post: UILabel!
     
+    @IBOutlet weak var followerStatusDot: UIImageView!
+    @IBOutlet weak var statusDot: UIImageView!
     @IBOutlet weak var time: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -120,9 +120,11 @@ class NewsfeedTableViewController: UITableViewController {
                     let postUser  = postObject?["user"]
                     let postTime = postObject?["time"]
                     let postPost = postObject?["post"]
+                    let postStatus = postObject?["postStatus"]
+                    
                     
                     //creating artist object with model and fetched values
-                    let post = PostModel(id: postId as! String?, user: postUser as! String?, post: postPost as! String?, time: postTime as! String?)
+                    let post = PostModel(id: postId as! String?, user: postUser as! String?, post: postPost as! String?, time: postTime as! String?, postStatus: postStatus as! String?)
                     
                     //appending it to list
                     var followerEmails = [String]()
@@ -179,12 +181,9 @@ class NewsfeedTableViewController: UITableViewController {
         cell.post?.text = post.post
         cell.time?.text = post.time
         
-        /*
-         if theUser.status == "red"{
-         cell.statusDot.image = UIImage(named:"red.png")
-         userDiscipline = "red"
-         }
-         */
+        if post.postStatus == "red"{
+            cell.statusDot.image = UIImage(named:"red.png")
+        }
         
         return cell
     }

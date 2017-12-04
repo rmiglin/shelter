@@ -11,6 +11,7 @@ import UIKit
 
 class NewsfeedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var statusDot: UIImageView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var post: UILabel!
     override func awakeFromNib() {

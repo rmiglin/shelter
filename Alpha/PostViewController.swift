@@ -30,7 +30,6 @@ class PostViewController: UIViewController {
         }
         else{
         
-        self.addPost()
             
         let theUser = userList[0]
             
@@ -39,6 +38,7 @@ class PostViewController: UIViewController {
         let safe = UIAlertAction(title: "Safe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
                 let ID = theUser.id
                 let status = "green"
+            self.addPost(status: status)
                 _ = self.navigationController?.popViewController(animated: true)
                 
         self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
@@ -46,6 +46,7 @@ class PostViewController: UIViewController {
         let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
                 let ID = theUser.id
                 let status = "red"
+            self.addPost(status: status)
                 _ = self.navigationController?.popViewController(animated: true)
                 
         self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
@@ -115,7 +116,7 @@ class PostViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func addPost(){
+    func addPost(status: String){
         //generating a new key
         //and also getting the generated key
         let key = refPosts.childByAutoId().key
@@ -124,7 +125,8 @@ class PostViewController: UIViewController {
         let post = ["id":key,
                     "user": Auth.auth().currentUser?.email as! String,
                     "post": self.post.text,
-                    "time" : NSDate().description
+                    "time" : NSDate().description,
+                    "postStatus" : status
             
             ] as [String : Any]
         
