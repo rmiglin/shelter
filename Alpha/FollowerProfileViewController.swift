@@ -14,9 +14,42 @@ import FirebaseAuth
 class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     var postList = [PostModel]()
     var refPosts: DatabaseReference!
-
+    var refUsers: DatabaseReference!
     
 
+
+
+    @IBAction func statusDotBtn(_ sender: Any) {
+        let theUser = self.followerUserModel!
+        let alertController = UIAlertController(title: theUser.firstName, message: "Are you safe from harm?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let safe = UIAlertAction(title: "Safe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+            let ID = theUser.id
+            let status = "green"
+
+        self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: "theUser.streetAddress!", city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
+            print("Safe Button Pressed")
+            self.statusDot.setBackgroundImage(UIImage(named:"green.png"), for: UIControlState.normal)
+            self.followerUserModel!.status = "green"
+            
+        })
+        let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+            let ID = theUser.id
+            let status = "red"
+
+            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: "theUser.streetAddress!", city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
+            print("Unsafe Button Pressed")
+            self.statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
+            self.followerUserModel!.status = "red"
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
+        alertController.addAction(cancelAction)
+        alertController.addAction(safe)
+        alertController.addAction(unsafe)
+        present(alertController, animated: true, completion: nil)
+    }
+    @IBOutlet weak var statusDot: UIButton!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var followerProfileTableView: UITableView!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,6 +87,7 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refUsers = Database.database().reference().child("users");
         refPosts = Database.database().reference().child("posts");
         
         //observing the data changes
@@ -90,6 +124,9 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
 
         // Do any additional setup after loading the view.
         name.text = followerUserModel?.firstName
+        if followerUserModel?.status == "red"{
+            statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,6 +148,28 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidAppear(_ animated: Bool) {
 
         self.followerProfileTableView.reloadData()
+
+    }
+    func updateUser(id:String, firstName:String, lastName:String,email:String, password:String, phone:String, streetAddress:String,city:String, state:String, zip:String, status:String, shareLocation: String){
+        //creating user with the new given values
+        let user = ["id":id,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "enterEmail": email,
+                    "enterPassword": password,
+                    "phoneNumber": phone,
+                    "streetAddress": streetAddress,
+                    "city": city,
+                    "state": state,
+                    "zip": zip,
+                    "status": status,
+                    "shareLocation": shareLocation
+            
+        ]
+        
+        //updating the user using the key of the artist
+        refUsers.child(id).setValue(user)
+        
     }
 
 }
