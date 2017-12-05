@@ -14,6 +14,8 @@ import FirebaseDatabase
 
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var postList = [PostModel]()
+    var refPosts: DatabaseReference!
     @IBAction func shareLocation(_ sender: Any) {
         let theUser = userList[0]
         var shareLocation = "True"
@@ -38,13 +40,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let status = "green"
             
             self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
-            print("Safe Button Pressed")})
+            print("Safe Button Pressed")
+            self.addPost(status: status)
+        })
         let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
             let ID = theUser.id
             let status = "red"
             
             self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
-            print("Unsafe Button Pressed")})
+            print("Unsafe Button Pressed")
+            self.addPost(status: status)
+        })
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
         alertController.addAction(cancelAction)
         alertController.addAction(safe)
@@ -196,6 +203,39 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
         })
+        refPosts = Database.database().reference().child("posts");
+        
+        //observing the data changes
+        refPosts.observe(DataEventType.value, with: { (snapshot) in
+            //if the reference have some values
+            if snapshot.childrenCount > 0 {
+                
+                //clearing the list
+                self.postList.removeAll()
+                
+                //iterating through all the values
+                for posts in snapshot.children.allObjects as! [DataSnapshot] {
+                    //getting values
+                    let postObject = posts.value as? [String: AnyObject]
+                    let postId  = postObject?["id"]
+                    let postUser  = postObject?["user"]
+                    let postTime = postObject?["time"]
+                    let postPost = postObject?["post"]
+                    let postStatus = postObject?["postStatus"]
+                    
+                    //creating artist object with model and fetched values
+                    let post = PostModel(id: postId as! String?, user: postUser as! String?, post: postPost as! String?, time: postTime as! String?, postStatus: postStatus as! String?)
+                    
+                    //appending it to list
+                    
+                    if(post.user == Auth.auth().currentUser?.email) {
+                        self.postList.append(post)
+                    }
+                }
+
+            }
+            
+        })
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -259,6 +299,32 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func addPost(status: String){
+        //generating a new key
+        //and also getting the generated key
+        let key = refPosts.childByAutoId().key
+        print(NSDate().description)
+        //creating user with the given values
+        var safeString = ""
+        if (status == "red"){
+            safeString = "not safe"
+        }
+        if (status == "green"){
+            safeString = "safe"
+        }
+        
+        let post = ["id":key,
+                    "user": Auth.auth().currentUser?.email as! String,
+                    "post": "\(String!(self.userList[0].firstName!)!) \(String!(self.userList[0].lastName!)!) is \(String!(safeString)!)",
+            "time" : NSDate().description,
+            "postStatus" : status
+            
+            ] as [String : Any]
+        
+        //adding the user inside the generated unique key
+        refPosts.child(key).setValue(post)
+        
+    }
     
     
     override func didReceiveMemoryWarning() {
