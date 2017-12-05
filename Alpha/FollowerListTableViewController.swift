@@ -1,3 +1,4 @@
+
 //
 //  FollowerListTableViewController.swift
 //  Alpha
@@ -194,21 +195,27 @@ class FollowerListTableViewController: UITableViewController {
     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let selectedIndex = tableView.indexPathsForSelectedRows
-        let follower: FollowerModel
-        follower = followerList[selectedIndex![0][1]]
-        var theUser: UserModel
-        theUser = userList[0]
-        
-        for user in userList
-        {
-            if(user.email == follower.follower)
-            {
-                theUser = user
-            }
-        }
-        
         if segue.identifier == "ShowDetail" {
+            let selectedIndex = tableView.indexPathsForSelectedRows
+            let follower: FollowerModel
+            if ((followerList.count == 0)) {
+                follower = FollowerModel(id: "", follower: "", currentUser: "", show: "")
+            }
+            else {
+                follower = followerList[selectedIndex![0][1]]
+            }
+            var theUser: UserModel
+            theUser = userList[0]
+        
+            for user in userList
+            {
+                if(user.email == follower.follower)
+                {
+                    theUser = user
+                }
+            }
+        
+        
             if let dsvc = segue.destination as? FollowerProfileViewController{
                 dsvc.follower = followerList[selectedIndex![0][1]]
                 dsvc.followerUserModel = theUser
@@ -216,5 +223,4 @@ class FollowerListTableViewController: UITableViewController {
         }
         
     }
-
 }

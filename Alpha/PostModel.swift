@@ -12,6 +12,7 @@ class PostModel {
     
     var id: String?
     var user: String?
+
     var post: String?
     var time: String?
     var postStatus: String?

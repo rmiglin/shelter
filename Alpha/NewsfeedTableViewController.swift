@@ -118,6 +118,8 @@ class NewsfeedTableViewController: UITableViewController {
                     let postObject = posts.value as? [String: AnyObject]
                     let postId  = postObject?["id"]
                     let postUser  = postObject?["user"]
+                    let postFirst = postObject?["firstName"]
+                    let postLast = postObject?["lastName"]
                     let postTime = postObject?["time"]
                     let postPost = postObject?["post"]
                     let postStatus = postObject?["postStatus"]
@@ -144,6 +146,8 @@ class NewsfeedTableViewController: UITableViewController {
                 
             }
         })
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
     }
 
     override func didReceiveMemoryWarning() {
@@ -162,7 +166,6 @@ class NewsfeedTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return postList.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //creating a cell using the custom class
@@ -180,6 +183,7 @@ class NewsfeedTableViewController: UITableViewController {
         
         cell.post?.text = post.post
         cell.time?.text = post.time
+        cell.name?.text = post.user
         
         if post.postStatus == "red"{
             cell.statusDot.image = UIImage(named:"red.png")

@@ -99,6 +99,9 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
         if followerUserModel?.status == "red"{
             statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
         }
+        
+        self.followerProfileTableView.rowHeight = UITableViewAutomaticDimension
+        self.followerProfileTableView.estimatedRowHeight = 140
     }
 
     override func didReceiveMemoryWarning() {
