@@ -843,11 +843,11 @@
             </objects>
             <point key="canvasLocation" x="503" y="2584"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Followers-->
         <scene sceneID="Bjy-mQ-DuF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sht-Zx-Q5B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="button_compass.png" systemItem="contacts" id="VPm-q8-WiO"/>
+                    <tabBarItem key="tabBarItem" title="Followers" image="Followers" selectedImage="Followers" id="VPm-q8-WiO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZK0-jn-HK6">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1121,11 +1121,11 @@
             </objects>
             <point key="canvasLocation" x="5425" y="-44"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Map-->
         <scene sceneID="lD6-uQ-XRr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SJh-qM-rIO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="" systemItem="featured" id="26w-RF-0Cp"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Map" image="MapMarker" selectedImage="MapMarker" id="26w-RF-0Cp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RGP-eJ-IQV">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1140,11 +1140,11 @@
             </objects>
             <point key="canvasLocation" x="3311" y="778"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile-->
         <scene sceneID="wtW-Sq-6df">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HFH-1B-Rze" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="HzA-a2-8Ob"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" selectedImage="Profile" id="HzA-a2-8Ob"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Aka-8d-kdM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1250,11 +1250,11 @@
             </objects>
             <point key="canvasLocation" x="4632.8000000000002" y="2583.9580209895053"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Newsfeed-->
         <scene sceneID="rkm-dr-qbw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qLa-0E-BL9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="6wG-bE-RPJ"/>
+                    <tabBarItem key="tabBarItem" title="Newsfeed" image="Feed" selectedImage="Feed" id="6wG-bE-RPJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kGA-Dp-RhU">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1269,11 +1269,11 @@
             </objects>
             <point key="canvasLocation" x="2878" y="2584"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Settings-->
         <scene sceneID="Dab-vc-S6P">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j0X-vh-9mt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="ccq-o0-a5J" customClass="TabBarItem" customModule="Alpha" customModuleProvider="target"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" selectedImage="Settings" id="ccq-o0-a5J" customClass="TabBarItem" customModule="Alpha" customModuleProvider="target"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MQC-ZX-TSF">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1290,7 +1290,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button_compass.png" width="40" height="40"/>
+        <image name="Feed" width="30" height="30"/>
+        <image name="Followers" width="30" height="30"/>
+        <image name="MapMarker" width="30" height="30"/>
+        <image name="Profile" width="30" height="30"/>
+        <image name="Settings" width="30" height="30"/>
         <image name="green.png" width="640" height="640"/>
     </resources>
     <inferredMetricsTieBreakers>
