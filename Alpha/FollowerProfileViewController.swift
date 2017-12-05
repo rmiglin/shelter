@@ -41,6 +41,9 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
         if post.postStatus == "red"{
             cell.followerStatusDot.image = UIImage(named:"red.png")
         }
+        if post.postStatus == "green"{
+            cell.followerStatusDot.image = UIImage(named:"green.png")
+        }
         
         return cell
         

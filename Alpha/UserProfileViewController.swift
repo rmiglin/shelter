@@ -31,6 +31,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             print("Safe Button Pressed")
             self.statusDot.setBackgroundImage(UIImage(named:"green.png"), for: UIControlState.normal)
             self.userList[0].status = "green"
+            self.addPost(status: status)
             
         })
         let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
@@ -41,6 +42,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             print("Unsafe Button Pressed")
             self.statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
             self.userList[0].status = "red"
+            self.addPost(status: status)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
@@ -165,6 +167,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         if post.postStatus == "red"{
             cell.statusDot.image = UIImage(named:"red.png")
         }
+        if post.postStatus == "green"{
+            cell.statusDot.image = UIImage(named:"green.png")
+        }
         
         return cell
 
@@ -204,6 +209,32 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         //updating the user using the key of the artist
         refUsers.child(id).setValue(user)
+        
+    }
+    func addPost(status: String){
+        //generating a new key
+        //and also getting the generated key
+        let key = refPosts.childByAutoId().key
+        print(NSDate().description)
+        //creating user with the given values
+        var safeString = ""
+        if (status == "red"){
+            safeString = "not safe"
+        }
+        if (status == "green"){
+            safeString = "safe"
+        }
+        
+        let post = ["id":key,
+                    "user": Auth.auth().currentUser?.email as! String,
+                    "post": "\(String!(self.userList[0].firstName!)!) \(String!(self.userList[0].lastName!)!) is \(String!(safeString)!)",
+                    "time" : NSDate().description,
+                    "postStatus" : status
+            
+            ] as [String : Any]
+        
+        //adding the user inside the generated unique key
+        refPosts.child(key).setValue(post)
         
     }
 }

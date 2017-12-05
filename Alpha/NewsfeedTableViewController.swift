@@ -184,6 +184,9 @@ class NewsfeedTableViewController: UITableViewController {
         if post.postStatus == "red"{
             cell.statusDot.image = UIImage(named:"red.png")
         }
+        if post.postStatus == "green"{
+            cell.statusDot.image = UIImage(named:"green.png")
+        }
         
         return cell
     }
