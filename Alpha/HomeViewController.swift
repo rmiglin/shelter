@@ -156,7 +156,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Home"
+        self.title = "Settings"
         // Do any additional setup after loading the view.
         refUsers = Database.database().reference().child("users");
         
@@ -246,7 +246,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell1 = tableView.dequeueReusableCell(withIdentifier: "General", for: indexPath) as! GeneralTableViewCell
         
         var theUser: UserModel
-        print(userList)
         theUser = userList[0]
         
         
