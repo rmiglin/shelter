@@ -1267,9 +1267,6 @@
                                 <rect key="frame" x="121" y="148" width="132" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="green.png"/>
-                                <connections>
-                                    <action selector="statusDotBtn:" destination="5wc-iA-OnG" eventType="touchUpInside" id="XZT-oh-2K5"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83921568629999999" green="0.91764705879999997" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -1292,7 +1289,7 @@
         <image name="green.png" width="640" height="640"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="o6T-BW-IPg"/>
+        <segue reference="Zcz-HK-5VH"/>
         <segue reference="BSv-hQ-TYD"/>
         <segue reference="Fhz-UD-zjc"/>
         <segue reference="jMw-Ce-dVY"/>
