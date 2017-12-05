@@ -18,37 +18,6 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
     
 
 
-
-    @IBAction func statusDotBtn(_ sender: Any) {
-        let theUser = self.followerUserModel!
-        let alertController = UIAlertController(title: theUser.firstName, message: "Are you safe from harm?", preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        let safe = UIAlertAction(title: "Safe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
-            let ID = theUser.id
-            let status = "green"
-
-        self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: "theUser.streetAddress!", city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
-            print("Safe Button Pressed")
-            self.statusDot.setBackgroundImage(UIImage(named:"green.png"), for: UIControlState.normal)
-            self.followerUserModel!.status = "green"
-            
-        })
-        let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
-            let ID = theUser.id
-            let status = "red"
-
-            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: "theUser.streetAddress!", city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
-            print("Unsafe Button Pressed")
-            self.statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
-            self.followerUserModel!.status = "red"
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
-        alertController.addAction(cancelAction)
-        alertController.addAction(safe)
-        alertController.addAction(unsafe)
-        present(alertController, animated: true, completion: nil)
-    }
     @IBOutlet weak var statusDot: UIButton!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var followerProfileTableView: UITableView!

@@ -16,7 +16,40 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     var postList = [PostModel]()
     var refPosts: DatabaseReference!
+    var userList = [UserModel]()
+    var refUsers: DatabaseReference!
 
+    @IBAction func statusDot(_ sender: Any) {
+        let theUser = userList[0]
+        let alertController = UIAlertController(title: theUser.firstName, message: "Are you safe from harm?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let safe = UIAlertAction(title: "Safe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+            let ID = theUser.id
+            let status = "green"
+            
+            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: "theUser.streetAddress!", city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
+            print("Safe Button Pressed")
+            self.statusDot.setBackgroundImage(UIImage(named:"green.png"), for: UIControlState.normal)
+            self.userList[0].status = "green"
+            
+        })
+        let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
+            let ID = theUser.id
+            let status = "red"
+            
+            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: "theUser.streetAddress!", city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
+            print("Unsafe Button Pressed")
+            self.statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
+            self.userList[0].status = "red"
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
+        alertController.addAction(cancelAction)
+        alertController.addAction(safe)
+        alertController.addAction(unsafe)
+        present(alertController, animated: true, completion: nil)
+    }
+    @IBOutlet weak var statusDot: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,9 +85,54 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 self.profileTableView.reloadData()
                 
             }
+            
         })
-
+        
+        userList = [UserModel(id: "", firstName: "", lastName: "", email: "", password: "", phoneNumber: "", streetAddress: "", city: "", state: "", zip: "", status: "green", shareLocation: "True")]
+        
+        refUsers = Database.database().reference().child("users");
+        
+        //observing the data changes
+        refUsers.observe(DataEventType.value, with: { (snapshot) in
+            
+            //if the reference have some values
+            if snapshot.childrenCount > 0 {
+                
+                //clearing the list
+                self.userList.removeAll()
+                
+                //iterating through all the values
+                for user in snapshot.children.allObjects as! [DataSnapshot] {
+                    //getting values
+                    let userObject = user.value as? [String: AnyObject]
+                    let userId  = userObject?["id"]
+                    let userFirstName  = userObject?["firstName"]
+                    let userLastName = userObject?["lastName"]
+                    let userEmail = userObject?["enterEmail"]
+                    let userPassword  = userObject?["enterPassword"]
+                    let userPhoneNumber = userObject?["phoneNumber"]
+                    let userStreetAddress = userObject?["streetAdress"]
+                    let userCity  = userObject?["city"]
+                    let userState = userObject?["state"]
+                    let userZip = userObject?["zip"]
+                    let userStatus = userObject?["status"]
+                    let userShareLocation = userObject?["shareLocation"]
+                    
+                    //creating artist object with model and fetched values
+                    let user = UserModel(id: userId as! String?, firstName: userFirstName as! String?, lastName: userLastName as! String?, email: userEmail as! String?, password: userPassword as! String?, phoneNumber: userPhoneNumber as! String?, streetAddress: userStreetAddress as! String?, city: userCity as! String?, state: userState as! String?, zip: userZip as! String?, status: userStatus as! String?, shareLocation: userShareLocation as! String?)
+                    
+                    //appending it to list
+                    if(user.email == Auth.auth().currentUser?.email){
+                    self.userList.append(user)
+                        if user.status == "red"{
+                            self.statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
+                        }
+                    }
+                }
+            }
+        })
         // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,4 +185,25 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     */
 
+    func updateUser(id:String, firstName:String, lastName:String,email:String, password:String, phone:String, streetAddress:String,city:String, state:String, zip:String, status:String, shareLocation: String){
+        //creating user with the new given values
+        let user = ["id":id,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "enterEmail": email,
+                    "enterPassword": password,
+                    "phoneNumber": phone,
+                    "streetAddress": streetAddress,
+                    "city": city,
+                    "state": state,
+                    "zip": zip,
+                    "status": status,
+                    "shareLocation": shareLocation
+            
+        ]
+        
+        //updating the user using the key of the artist
+        refUsers.child(id).setValue(user)
+        
+    }
 }

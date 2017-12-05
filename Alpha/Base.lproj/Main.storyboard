@@ -1101,6 +1101,9 @@
                                 <rect key="frame" x="122" y="149" width="132" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="green.png"/>
+                                <connections>
+                                    <action selector="statusDot:" destination="09K-7j-IaJ" eventType="touchUpInside" id="wM0-gm-aYf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83921568629999999" green="0.91764705879999997" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -1109,6 +1112,7 @@
                     <navigationItem key="navigationItem" id="KYb-nD-nJi"/>
                     <connections>
                         <outlet property="profileTableView" destination="LPC-Fc-BRT" id="bXZ-IK-lF7"/>
+                        <outlet property="statusDot" destination="YeT-pn-maT" id="g4o-pd-u3D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBi-zs-ZNq" userLabel="First Responder" sceneMemberID="firstResponder"/>
