@@ -238,7 +238,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -276,10 +276,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCell(withIdentifier: "Privacy", for: indexPath)
             return cell
         }
-        if indexPath.row == 2{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Notifications", for: indexPath)
-            return cell
-        }
+
         return cell1
     }
     
