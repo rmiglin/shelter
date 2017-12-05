@@ -95,7 +95,7 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
         })
 
         // Do any additional setup after loading the view.
-        name.text = followerUserModel?.firstName
+        name.text = "\(String!((followerUserModel?.firstName!)!)!) \(String!((followerUserModel?.lastName!)!)!)"
         if followerUserModel?.status == "red"{
             statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
         }

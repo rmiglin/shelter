@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var profileTableView: UITableView!
     
     var postList = [PostModel]()
@@ -128,12 +129,18 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                     self.userList.append(user)
                         if user.status == "red"{
                             self.statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
+                            self.name.text = "\(String!(user.firstName!)!) \(String!(user.lastName!)!)"
+                        }
+                        else{
+                            self.statusDot.setBackgroundImage(UIImage(named:"green.png"), for: UIControlState.normal)
+                            self.name.text = "\(String!(user.firstName!)!) \(String!(user.lastName!)!)"
                         }
                     }
                 }
             }
         })
         // Do any additional setup after loading the view.
+
 
     }
 
@@ -176,7 +183,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     override func viewDidAppear(_ animated: Bool) {
- self.profileTableView.reloadData()
+        self.profileTableView.reloadData()
     }
     
 
