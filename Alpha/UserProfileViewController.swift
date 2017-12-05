@@ -168,7 +168,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
 
         
         cell.post?.text = post.post
-        cell.time?.text = post.time
+        cell.time?.text = post.time!
 
 
         if post.postStatus == "red"{

@@ -19,7 +19,7 @@ class LocationMarkerView: MKMarkerAnnotationView {
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             // 2
             markerTintColor = location.markerTintColor
-            glyphText = String(describing: location.title!.first!)
+            //glyphText = String(describing: location.title!.first!)
         }
     }
 }
