@@ -184,13 +184,8 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
        
 
         
-
-        mapView.addAnnotation(loc)
-        
-        if(theUser.shareLocation == "False"){
-            let lastAnnotations = [self.mapView.annotations.last]
-            self.mapView.removeAnnotations(lastAnnotations as! [MKAnnotation])
-
+        if(theUser.shareLocation == "True"){
+            mapView.addAnnotation(loc)
         }
         
         
@@ -201,7 +196,6 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         if(theUser.shareLocation == "False"){
             cell.location?.text = "Location Not Available"
-            //self.mapView.removeAnnotation(<#T##annotation: MKAnnotation##MKAnnotation#>)
         }
         
         return cell
