@@ -26,6 +26,7 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var userList = [UserModel]()
     var refUsers: DatabaseReference!
     var count = 0.001
+    var count2 = 0.001
     var name = ""
     var selectedIndex = 0
 
@@ -180,7 +181,7 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let loc = Location(  title: theUser.firstName!,
                              locationName: "Current Location",
                              discipline: userDiscipline,
-                             coordinate: CLLocationCoordinate2D(latitude: 30.2907, longitude: -97.7472+count))
+                             coordinate: CLLocationCoordinate2D(latitude: 30.2907+count, longitude: -97.7472+count2))
        
 
         
@@ -189,7 +190,8 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         
-        count+=0.004
+        count=0.008*(2*drand48()-1)
+        count2=0.008*(2*drand48()-1)
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
         
         cell.location?.text = "(\(String(loc.coordinate.latitude)), \(String(loc.coordinate.longitude)))"
