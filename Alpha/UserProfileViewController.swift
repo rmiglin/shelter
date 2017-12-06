@@ -39,7 +39,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             let ID = theUser.id
             let status = "red"
             
-            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
+            self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: "theUser.streetAddress!", city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
             print("Unsafe Button Pressed")
             self.statusDot.setBackgroundImage(UIImage(named:"red.png"), for: UIControlState.normal)
             self.userList[0].status = "red"
