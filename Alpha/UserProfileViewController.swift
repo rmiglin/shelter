@@ -234,7 +234,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         let post = ["id":key,
                     "user": Auth.auth().currentUser?.email as! String,
-                    "post": "\(String!(self.userList[0].firstName!)!) \(String!(self.userList[0].lastName!)!) is \(String!(safeString)!)",
+                    "post": "has been marked as \(String!(safeString)!)",
                     "time" : NSDate().description,
                     "postStatus" : status
             

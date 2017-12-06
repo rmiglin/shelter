@@ -183,8 +183,17 @@ class NewsfeedTableViewController: UITableViewController {
         
         cell.post?.text = post.post
         cell.time?.text = post.time
-        cell.name?.text = post.user
         
+        var userName = ""
+        
+        for user in userList{
+            if(user.email==post.user){
+                userName = "\(String!(user.firstName!)!) \(String!(user.lastName!)!)"
+            }
+        }
+
+        cell.name?.text = userName
+
         if post.postStatus == "red"{
             cell.statusDot.image = UIImage(named:"red.png")
         }
