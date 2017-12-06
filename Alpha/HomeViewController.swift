@@ -311,7 +311,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let post = ["id":key,
                     "user": Auth.auth().currentUser?.email as! String,
-                    "post": "has been marked as \(String!(safeString)!)",
+                    "post": "Has been marked as \(String!(safeString)!)",
             "time" : NSDate().description,
             "postStatus" : status
             
