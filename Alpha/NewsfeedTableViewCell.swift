@@ -14,7 +14,9 @@ class NewsfeedTableViewCell: UITableViewCell {
     @IBOutlet weak var statusDot: UIImageView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var post: UILabel!
+    var postID: String!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var likeCounter: UILabel!
     
 
     override func awakeFromNib() {

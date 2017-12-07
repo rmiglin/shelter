@@ -18,10 +18,12 @@ class NewsfeedTableViewController: UITableViewController {
     var refUsers: DatabaseReference!
     var postList = [PostModel]()
     var refPosts: DatabaseReference!
+    var refLikes: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Newsfeed"
+        refLikes = Database.database().reference().child("likes")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -118,15 +120,14 @@ class NewsfeedTableViewController: UITableViewController {
                     let postObject = posts.value as? [String: AnyObject]
                     let postId  = postObject?["id"]
                     let postUser  = postObject?["user"]
-                    let postFirst = postObject?["firstName"]
-                    let postLast = postObject?["lastName"]
                     let postTime = postObject?["time"]
                     let postPost = postObject?["post"]
                     let postStatus = postObject?["postStatus"]
+                    let likeCount = postObject?["likeCounter"]
                     
                     
                     //creating artist object with model and fetched values
-                    let post = PostModel(id: postId as! String?, user: postUser as! String?, post: postPost as! String?, time: postTime as! String?, postStatus: postStatus as! String?)
+                    let post = PostModel(id: postId as! String?, user: postUser as! String?, post: postPost as! String?, time: postTime as! String?, postStatus: postStatus as! String?, likeCounter: likeCount as! Int?)
                     
                     //appending it to list
                     var followerEmails = [String]()
@@ -174,6 +175,7 @@ class NewsfeedTableViewController: UITableViewController {
         
         //the follower object
         let post: PostModel
+        let like: LikeModel
         
         
         //getting the follower of selected position
@@ -181,8 +183,10 @@ class NewsfeedTableViewController: UITableViewController {
         
         
         
+        
         cell.post?.text = post.post
         cell.time?.text = post.time
+        cell.likeCounter?.text = String(post.likeCounter!)
         
         var userName = ""
         
@@ -200,11 +204,15 @@ class NewsfeedTableViewController: UITableViewController {
         if post.postStatus == "green"{
             cell.statusDot.image = UIImage(named:"green.png")
         }
-        
+        cell.postID = self.postList[indexPath.row].id
         return cell
     }
- 
-
+ /*
+    func addLikes(postID: String?) {
+        let keyToPost = Database.database().reference().child("posts").childByAutoId().key
+        Database.database().reference().child("posts")])
+    }
+*/
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

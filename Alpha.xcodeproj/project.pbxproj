@@ -38,6 +38,7 @@
 		29E7B9DD1FD0CCD800B68327 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7B9DC1FD0CCD800B68327 /* NewsfeedTableViewController.swift */; };
 		29F8F8CF1FC4D25E0093AE4F /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F8F8CE1FC4D25E0093AE4F /* GeneralTableViewCell.swift */; };
 		407854E71FC3FFC10063B5F3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407854E61FC3FFC10063B5F3 /* SettingsViewController.swift */; };
+		919E1FD51FD9E5FE00BD875F /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919E1FD41FD9E5FE00BD875F /* LikeModel.swift */; };
 		9F21E08C1B9D2CCE53ABFECD /* Pods_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A58AC448B0434ED060BF0FB /* Pods_Alpha.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		3246B97ED5B872EB8EEB8D57 /* Pods-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-Alpha/Pods-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		407854E61FC3FFC10063B5F3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4A58AC448B0434ED060BF0FB /* Pods_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		919E1FD41FD9E5FE00BD875F /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				29D9D5151FD1DB6000B31C4D /* ProfileTableViewCell.swift */,
 				29E0C63C1FD1E37200534330 /* NewsfeedTableViewCell.swift */,
 				29E0C63E1FD1F04F00534330 /* FollowerProfileViewController.swift */,
+				919E1FD41FD9E5FE00BD875F /* LikeModel.swift */,
 			);
 			path = Alpha;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			files = (
 				292FBC291FA3E74B007A1749 /* LoginViewController.swift in Sources */,
 				292FBC2F1FA4BE31007A1749 /* RegisterViewController.swift in Sources */,
+				919E1FD51FD9E5FE00BD875F /* LikeModel.swift in Sources */,
 				29CA8C171FC4FF95003797C9 /* LocationMarkerView.swift in Sources */,
 				29D9D5161FD1DB6000B31C4D /* ProfileTableViewCell.swift in Sources */,
 				2927404A1FAD04F800ECC7CB /* FollowerListTableViewController.swift in Sources */,

@@ -79,9 +79,10 @@ class FollowerProfileViewController: UIViewController, UITableViewDelegate, UITa
                     let postTime = postObject?["time"]
                     let postPost = postObject?["post"]
                     let postStatus = postObject?["postStatus"]
+                    let likeCount = postObject?["likeCount"]
                     
                     //creating artist object with model and fetched values
-                    let post = PostModel(id: postId as! String?, user: postUser as! String?, post: postPost as! String?, time: postTime as! String?, postStatus: postStatus as! String?)
+                    let post = PostModel(id: postId as! String?, user: postUser as! String?, post: postPost as! String?, time: postTime as! String?, postStatus: postStatus as! String?, likeCounter: likeCount as! Int?)
                     
                     //appending it to list
                     

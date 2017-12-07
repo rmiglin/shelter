@@ -126,7 +126,8 @@ class PostViewController: UIViewController {
                     "user": Auth.auth().currentUser?.email as! String,
                     "post": self.post.text,
                     "time" : NSDate().description,
-                    "postStatus" : status
+                    "postStatus" : status,
+                    "likeCounter" : 0
             
             ] as [String : Any]
         

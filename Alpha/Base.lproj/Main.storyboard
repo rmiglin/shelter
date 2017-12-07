@@ -675,15 +675,10 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="M0c-N0-FdD">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gXA-VF-6ZU">
-                                <rect key="frame" x="313" y="7" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <segue destination="uR8-hG-YnL" kind="show" id="vjQ-Yt-4Ya"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="M0c-N0-FdD">
+                            <connections>
+                                <segue destination="uR8-hG-YnL" kind="show" id="nOe-Jy-IAp"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -741,15 +736,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="lNB-hH-RNb">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="bHn-ea-UBp">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EKL-3d-6N1">
-                                <rect key="frame" x="313" y="7" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <segue destination="uR8-hG-YnL" kind="show" id="7up-JD-d3w"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="bHn-ea-UBp">
+                            <connections>
+                                <segue destination="uR8-hG-YnL" kind="show" id="w6l-t0-obr"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -887,15 +877,18 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWu-JY-4gL">
-                                            <rect key="frame" x="269" y="75.5" width="55" height="14.5"/>
+                                            <rect key="frame" x="246" y="75" width="55" height="14.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14.5" id="QcV-Ue-PjM"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="Comment"/>
+                                            <connections>
+                                                <action selector="comment:" destination="dc3-Nb-LPD" eventType="touchUpInside" id="OpW-Zi-Tad"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWR-4Q-w0o">
-                                            <rect key="frame" x="329" y="75.5" width="30" height="14.5"/>
+                                            <rect key="frame" x="319" y="75.5" width="40" height="14.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14.5" id="MUq-r3-pLg"/>
                                             </constraints>
@@ -916,11 +909,21 @@
                                                 <constraint firstAttribute="width" constant="10" id="6Yk-37-fQ0"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FN-zv-eX4">
+                                            <rect key="frame" x="311" y="75" width="8" height="14.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="14.5" id="6uk-jh-l3f"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="m5p-i4-Qzk" firstAttribute="top" secondItem="HDx-VK-o1G" secondAttribute="bottom" constant="3" id="1uO-hk-TAO"/>
                                         <constraint firstItem="HDx-VK-o1G" firstAttribute="top" secondItem="NHc-7r-C86" secondAttribute="bottom" id="2Xu-rW-bQN"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="aWR-4Q-w0o" secondAttribute="bottom" id="4CC-Xd-Ecw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5FN-zv-eX4" secondAttribute="bottom" id="9ER-Fm-tYz"/>
                                         <constraint firstItem="h3o-zi-ucW" firstAttribute="leading" secondItem="U2O-tE-1be" secondAttribute="leadingMargin" id="9HC-jH-aBw"/>
                                         <constraint firstItem="HDx-VK-o1G" firstAttribute="trailing" secondItem="U2O-tE-1be" secondAttribute="trailingMargin" id="Dln-VV-DOP"/>
                                         <constraint firstItem="m5p-i4-Qzk" firstAttribute="leading" secondItem="U2O-tE-1be" secondAttribute="leadingMargin" id="EcC-4V-dOz"/>
@@ -929,14 +932,17 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="bWu-JY-4gL" secondAttribute="bottom" id="Jot-XC-J80"/>
                                         <constraint firstItem="h3o-zi-ucW" firstAttribute="top" secondItem="U2O-tE-1be" secondAttribute="topMargin" constant="5" id="JyP-yO-d3Q"/>
                                         <constraint firstItem="NHc-7r-C86" firstAttribute="top" secondItem="U2O-tE-1be" secondAttribute="topMargin" id="Mx4-9Z-3A5"/>
+                                        <constraint firstItem="5FN-zv-eX4" firstAttribute="leading" secondItem="bWu-JY-4gL" secondAttribute="trailing" constant="10" id="NlI-n8-TEi"/>
                                         <constraint firstItem="m5p-i4-Qzk" firstAttribute="top" secondItem="HDx-VK-o1G" secondAttribute="bottom" constant="3" id="R8O-8I-Rfq"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="aWR-4Q-w0o" secondAttribute="trailing" id="Z5m-tD-hjl"/>
                                         <constraint firstItem="NHc-7r-C86" firstAttribute="leading" secondItem="h3o-zi-ucW" secondAttribute="trailing" constant="8" id="gLY-iP-tQq"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="bWu-JY-4gL" secondAttribute="trailing" constant="35" id="sUm-cn-UaI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bWu-JY-4gL" secondAttribute="trailing" constant="58" id="sUm-cn-UaI"/>
                                         <constraint firstItem="m5p-i4-Qzk" firstAttribute="bottom" secondItem="U2O-tE-1be" secondAttribute="bottomMargin" id="vac-7L-JfI"/>
+                                        <constraint firstItem="aWR-4Q-w0o" firstAttribute="leading" secondItem="5FN-zv-eX4" secondAttribute="trailing" id="ycO-uo-oVi"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="likeCounter" destination="5FN-zv-eX4" id="IgJ-ew-gvb"/>
                                     <outlet property="name" destination="NHc-7r-C86" id="uA0-iO-re2"/>
                                     <outlet property="post" destination="HDx-VK-o1G" id="GtF-Vb-Lv2"/>
                                     <outlet property="statusDot" destination="h3o-zi-ucW" id="3G1-hQ-FYk"/>
@@ -1296,7 +1302,7 @@
         <image name="green.png" width="640" height="640"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7up-JD-d3w"/>
+        <segue reference="nOe-Jy-IAp"/>
         <segue reference="BSv-hQ-TYD"/>
         <segue reference="Fhz-UD-zjc"/>
         <segue reference="jMw-Ce-dVY"/>
