@@ -177,6 +177,10 @@ class mapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             cell.statusDot.image = UIImage(named:"red.png")
             userDiscipline = "red"
         }
+        if theUser.status == "green"{
+            cell.statusDot.image = UIImage(named:"green.png")
+            userDiscipline = "green"
+        }
         
         let loc = Location(  title: theUser.firstName!,
                              locationName: "Current Location",
