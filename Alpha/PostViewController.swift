@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import UserNotifications
 
 class PostViewController: UIViewController {
     
@@ -38,19 +39,49 @@ class PostViewController: UIViewController {
         let safe = UIAlertAction(title: "Safe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
                 let ID = theUser.id
                 let status = "green"
+                //push notification for marking onseself safe
+                let content = UNMutableNotificationContent()
+                content.title = String(describing: theUser) + "has been marked safe"
+                content.subtitle = String(describing: theUser) + "has marked themselves safe from harm"
+                content.badge = 1
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             self.addPost(status: status)
                 _ = self.navigationController?.popViewController(animated: true)
                 
         self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
                 print("Safe Button Pressed")})
+            /*
+            if(self.status == "green"){
+                let content = UNMutableNotificationContent()
+                content.title = String(describing: theUser) + "has been marked safe"
+                content.subtitle = "You have succesfully registered your account with Shelter!"
+                content.badge = 1
+            
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            
+                let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            }
+            */
+            
         let unsafe = UIAlertAction(title: "Unsafe", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
                 let ID = theUser.id
                 let status = "red"
+                //push notification for marking oneself unsafe
+                let content = UNMutableNotificationContent()
+                content.title = String(describing: theUser) + "has been marked safe"
+                content.subtitle = String(describing: theUser) + "has marked themselves unsafe from harm"
+                content.badge = 1
             self.addPost(status: status)
                 _ = self.navigationController?.popViewController(animated: true)
                 
         self.updateUser(id: ID!, firstName: theUser.firstName!, lastName: theUser.lastName!, email: theUser.email!, password: theUser.password!, phone: theUser.phoneNumber!, streetAddress: theUser.streetAddress!, city: theUser.city!, state: theUser.state!, zip: theUser.zip!, status: status, shareLocation: theUser.shareLocation!)
                 print("Unsafe Button Pressed")})
+            
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in }
         alertController.addAction(cancelAction)
         alertController.addAction(safe)
