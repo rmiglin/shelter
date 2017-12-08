@@ -20,6 +20,13 @@ class NewsfeedTableViewController: UITableViewController {
     var refPosts: DatabaseReference!
     var refLikes: DatabaseReference!
 
+    @IBAction func likeButton(_ sender: Any) {
+        let row = (sender as AnyObject).tag
+        let post = postList[postList.count - 1 - row!]
+        
+        self.addLikes(postID: post.id)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Newsfeed"
@@ -175,7 +182,6 @@ class NewsfeedTableViewController: UITableViewController {
         
         //the follower object
         let post: PostModel
-        let like: LikeModel
         
         
         //getting the follower of selected position
@@ -204,15 +210,19 @@ class NewsfeedTableViewController: UITableViewController {
         if post.postStatus == "green"{
             cell.statusDot.image = UIImage(named:"green.png")
         }
-        cell.postID = self.postList[indexPath.row].id
+        cell.likeBtn.tag = indexPath.row
         return cell
     }
- /*
+
     func addLikes(postID: String?) {
-        let keyToPost = Database.database().reference().child("posts").childByAutoId().key
-        Database.database().reference().child("posts")])
+        let key = refPosts.childByAutoId().key
+        let like = ["id": key,
+                    "postID": postID,
+                    "user": Auth.auth().currentUser?.email]
+        
+       refLikes.child(key).setValue(like)
     }
-*/
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
