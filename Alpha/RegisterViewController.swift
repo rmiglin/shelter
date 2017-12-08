@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import UserNotifications
 
 class RegisterViewController: UIViewController {
     var refUsers: DatabaseReference!
@@ -35,6 +36,18 @@ class RegisterViewController: UIViewController {
             
             present(alertController, animated: true, completion: nil)
             
+            //push notification notifying user that they have successfully registered a new account
+            let content = UNMutableNotificationContent()
+            content.title = "New Shelter Account"
+            content.subtitle = "You have succesfully registered your account with Shelter!"
+            content.body = "Shelter helps you to navigate emergency relief situations and find out if your loved ones are safe"
+            content.badge = 1
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            
         } else {
             Auth.auth().createUser(withEmail: enterEmail.text!, password: enterPassword.text!) { (user, error) in
                 
@@ -58,6 +71,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         refUsers = Database.database().reference().child("users");
     }
 

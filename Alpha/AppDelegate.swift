@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 import FirebaseAuth
+//import "UIApplication+SimulatorRemoteNotifications.h"
 
 
 @UIApplicationMain

@@ -14,5 +14,7 @@ target ‘Alpha’ do
   pod ‘KeychainSwift’
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'SimulatorRemoteNotifications'
+  
 end
 
