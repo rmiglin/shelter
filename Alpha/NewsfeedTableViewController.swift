@@ -17,13 +17,13 @@ class NewsfeedTableViewController: UITableViewController {
     var userList = [UserModel]()
     var refUsers: DatabaseReference!
     var postList = [PostModel]()
+    var likesList = [LikeModel]()
     var refPosts: DatabaseReference!
     var refLikes: DatabaseReference!
 
     @IBAction func likeButton(_ sender: Any) {
         let row = (sender as AnyObject).tag
         let post = postList[postList.count - 1 - row!]
-        
         self.addLikes(postID: post.id)
         
     }
@@ -31,6 +31,36 @@ class NewsfeedTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "Newsfeed"
         refLikes = Database.database().reference().child("likes")
+        
+        //observing the data changes
+        refLikes.observe(DataEventType.value, with: { (snapshot) in
+            
+            //if the reference have some values
+            if snapshot.childrenCount > 0 {
+                
+                //clearing the list
+                self.likesList.removeAll()
+                
+                //iterating through all the values
+                for like in snapshot.children.allObjects as! [DataSnapshot] {
+                    //getting values
+                    let likeObject = like.value as? [String: AnyObject]
+                    let likeID  = likeObject?["id"]
+                    let likePostId  = likeObject?["postID"]
+                    let likeUser = likeObject?["user"]
+                    
+                    //creating artist object with model and fetched values
+                    
+                    let like = LikeModel(id: likeID as? String, postID: likePostId as? String, user: likeUser as? String)
+                    
+                    //appending it to list
+                    self.likesList.append(like)
+                    
+                }
+                self.tableView.reloadData()
+            }
+            
+        })
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -188,10 +218,14 @@ class NewsfeedTableViewController: UITableViewController {
         post = postList[postList.count - 1  - indexPath.row]
         
         
-        
-        
         cell.post?.text = post.post
         cell.time?.text = post.time
+        
+        for like in likesList{
+            if(like.postID == post.id){
+                post.likeCounter = post.likeCounter! + 1
+            }
+        }
         cell.likeCounter?.text = String(post.likeCounter!)
         
         var userName = ""
