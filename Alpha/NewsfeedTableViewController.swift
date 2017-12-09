@@ -24,7 +24,7 @@ class NewsfeedTableViewController: UITableViewController {
     @IBAction func likeButton(_ sender: Any) {
         let row = (sender as AnyObject).tag
         let post = postList[postList.count - 1 - row!]
-        self.addLikes(postID: post.id)
+        self.addLikes(postID: post.id, postUser: post.user, postPost: post.post, postTime: post.time , postStatus: post.postStatus, postLikes: post.likeCounter)
         
     }
     override func viewDidLoad() {
@@ -220,14 +220,7 @@ class NewsfeedTableViewController: UITableViewController {
         
         cell.post?.text = post.post
         cell.time?.text = post.time
-        
-        for like in likesList{
-            if(like.postID == post.id){
-                post.likeCounter = post.likeCounter! + 1
-            }
-        }
         cell.likeCounter?.text = String(post.likeCounter!)
-        
         var userName = ""
         
         for user in userList{
@@ -248,15 +241,32 @@ class NewsfeedTableViewController: UITableViewController {
         return cell
     }
 
-    func addLikes(postID: String?) {
+    func addLikes(postID: String?, postUser: String?, postPost: String?, postTime: String?, postStatus: String?, postLikes: Int?) {
         let key = refPosts.childByAutoId().key
         let like = ["id": key,
                     "postID": postID,
                     "user": Auth.auth().currentUser?.email]
-        
-       refLikes.child(key).setValue(like)
+        refLikes.child(key).setValue(like)
+        self.updatePostAfterLike(id: postID!, user: postUser!, post: postPost!, time: postTime!, postStatus: postStatus!, likeCounter: postLikes!)
     }
 
+    func updatePostAfterLike(id: String, user: String, post: String, time: String, postStatus: String, likeCounter: Int) {
+        var numLikes = 0
+        for like in likesList {
+            if id == like.postID {
+                numLikes += 1
+            }
+        }
+
+        let post = ["id": id,
+                    "user": user,
+                    "post": post,
+                    "time": time,
+                    "postStatus": postStatus,
+                    "likeCounter": numLikes] as [String : Any]
+        
+        refPosts.child(id).setValue(post)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
